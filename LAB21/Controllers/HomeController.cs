@@ -39,11 +39,26 @@ namespace LAB21.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+        public IActionResult Result()
+        {
+          
+
+            return View();
+        }
+
+        [HttpGet]
         public IActionResult Result(User u)
         {
-            ViewBag.Name = u.FirstName;
-            
-            return View();
+            if (ModelState.IsValid)
+            {
+                ViewBag.FirstName = u.FirstName;
+                return View();
+            }
+
+            else
+            {
+                return RedirectToAction("Error");
+            }
         }
         public IActionResult Registration()
         {

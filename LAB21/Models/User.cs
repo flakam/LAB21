@@ -9,17 +9,17 @@ namespace LAB21.Models
     public class User
     {
         [Key]
-        [Required]
+        [Required(ErrorMessage ="Name is required")]
         [StringLength(10, MinimumLength = 3)]
         public string FirstName { get; set; }
         [Key]
-        [Required]
+        [Required(ErrorMessage ="Last name is required")]
         [StringLength(10, MinimumLength = 3)]
         public string LastName { get; set; }
 
         [Required]
         [MinLength(9)]
-        [MaxLength(9)]
+        [MaxLength(12)]
         public string PhoneNumber { get; set; }
         [Required]
         [MaxLength(20)]
